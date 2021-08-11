@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Realtorist.DataAccess.Mongo.Settings
+namespace Realtorist.DataAccess.Implementations.Mongo.Settings
 {
     /// <summary>
     /// Describes settings for the database connection

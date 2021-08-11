@@ -1,7 +1,7 @@
 using System;
 using MongoDB.Bson.Serialization;
 
-namespace Realtorist.DataAccess.Mongo.Serialization
+namespace Realtorist.DataAccess.Implementations.Mongo.Serialization
 {
     /// <summary>
     /// Provides serializer for enum values

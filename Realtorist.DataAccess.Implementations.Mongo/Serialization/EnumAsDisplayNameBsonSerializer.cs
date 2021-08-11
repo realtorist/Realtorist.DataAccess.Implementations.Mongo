@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using Realtorist.Models.Helpers;
 
-namespace Realtorist.DataAccess.Mongo.Serialization
+namespace Realtorist.DataAccess.Implementations.Mongo.Serialization
 {
     public class EnumAsDisplayNameBsonSerializer<TEnum> : StructSerializerBase<TEnum> where TEnum: struct, Enum
     {

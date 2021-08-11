@@ -11,7 +11,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Realtorist.DataAccess.Mongo
+namespace Realtorist.DataAccess.Implementations.Mongo
 {
     /// <summary>
     /// Contains useful mongo helpers

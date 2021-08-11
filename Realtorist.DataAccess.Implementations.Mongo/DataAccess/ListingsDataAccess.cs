@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Realtorist.DataAccess.Abstractions;
-using Realtorist.DataAccess.Mongo.Settings;
+using Realtorist.DataAccess.Implementations.Mongo.Settings;
 using Realtorist.Models.Listings;
 using Realtorist.Models.Enums;
 using Realtorist.Models.Enums.LookupTypes;
@@ -20,7 +20,7 @@ using System.Linq.Expressions;
 using Realtorist.Models.Listings.Enums;
 using Realtorist.Models.Exceptions;
 
-namespace Realtorist.DataAccess.Mongo.DataAccess
+namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 {
     /// <summary>
     /// Implements access to data in MongoDB

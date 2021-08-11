@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
 using Realtorist.DataAccess.Abstractions;
-using Realtorist.DataAccess.Mongo.Settings;
+using Realtorist.DataAccess.Implementations.Mongo.Settings;
 using Realtorist.Models.Blog;
 using Realtorist.Models.Enums;
 using Realtorist.Models.Events;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Realtorist.DataAccess.Mongo.DataAccess
+namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 {
     public class EventsDataAccess : IEventsDataAccess
     {

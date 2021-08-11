@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Realtorist.Models.Helpers;
 
-namespace Realtorist.DataAccess.Mongo.Serialization
+namespace Realtorist.DataAccess.Implementations.Mongo.Serialization
 {
     public class JTokenBsonSerializer : SerializerBase<JToken>
     {

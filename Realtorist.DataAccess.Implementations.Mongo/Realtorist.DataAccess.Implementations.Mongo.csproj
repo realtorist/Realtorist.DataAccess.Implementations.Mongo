@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageId>Realtorist.DataAccess.Mongo</PackageId>
+    <PackageId>Realtorist.DataAccess.Implementations.Mongo</PackageId>
     <Version>0.0.1</Version>
     <Authors>Dmytro Bondarchuk</Authors>
-    <Title>Realtorist.DataAccess.Mongo</Title>
+    <Title>Realtorist.DataAccess.Implementations.Mongo</Title>
     <Description>Mongo data access implementation for the Realtorist framework</Description>
-    <RepositoryUrl>https://github.com/realtorist/Realtorist.DataAccess.Mongo</RepositoryUrl>
+    <RepositoryUrl>https://github.com/realtorist/Realtorist.DataAccess.Implementations.Mongo</RepositoryUrl>
     <ReleaseNotes>Initial publish</ReleaseNotes>
   </PropertyGroup>
 

@@ -3,11 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization;
 using Realtorist.DataAccess.Abstractions;
-using Realtorist.DataAccess.Mongo.DataAccess;
-using Realtorist.DataAccess.Mongo.Serialization;
-using Realtorist.DataAccess.Mongo.Settings;
+using Realtorist.DataAccess.Implementations.Mongo.DataAccess;
+using Realtorist.DataAccess.Implementations.Mongo.Serialization;
+using Realtorist.DataAccess.Implementations.Mongo.Settings;
 
-namespace Realtorist.DataAccess.Mongo
+namespace Realtorist.DataAccess.Implementations.Mongo
 {
     /// <summary>
     /// Provides dependency injection helper methods

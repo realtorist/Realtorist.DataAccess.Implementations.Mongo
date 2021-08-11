@@ -1,4 +1,4 @@
-﻿namespace Realtorist.DataAccess.Mongo.Settings
+﻿namespace Realtorist.DataAccess.Implementations.Mongo.Settings
 {
     /// <summary>
     /// Implements settings for the database connection

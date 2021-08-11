@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realtorist.DataAccess.Mongo", "Realtorist.DataAccess.Mongo\Realtorist.DataAccess.Mongo.csproj", "{E693C8D0-A565-48CF-BF31-D0FD98F41C9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realtorist.DataAccess.Implementations.Mongo", "Realtorist.DataAccess.Implementations.Mongo\Realtorist.DataAccess.Implementations.Mongo.csproj", "{E693C8D0-A565-48CF-BF31-D0FD98F41C9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

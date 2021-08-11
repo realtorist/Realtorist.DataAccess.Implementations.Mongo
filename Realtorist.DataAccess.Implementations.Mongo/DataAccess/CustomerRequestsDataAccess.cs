@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
 using Realtorist.DataAccess.Abstractions;
-using Realtorist.DataAccess.Mongo.Settings;
+using Realtorist.DataAccess.Implementations.Mongo.Settings;
 using Realtorist.Models.CustomerRequests;
 using Realtorist.Models.Dto;
 using Realtorist.Models.Pagination;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Realtorist.DataAccess.Mongo.DataAccess
+namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 {
     /// <summary>
     /// Implements access to customer requests in MongoDB

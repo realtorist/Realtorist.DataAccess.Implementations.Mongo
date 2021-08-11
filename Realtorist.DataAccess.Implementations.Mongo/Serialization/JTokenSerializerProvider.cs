@@ -2,7 +2,7 @@ using System;
 using MongoDB.Bson.Serialization;
 using Newtonsoft.Json.Linq;
 
-namespace Realtorist.DataAccess.Mongo.Serialization
+namespace Realtorist.DataAccess.Implementations.Mongo.Serialization
 {
     /// <summary>
     /// Provides serializer for enum values

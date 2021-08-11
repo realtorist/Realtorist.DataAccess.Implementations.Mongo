@@ -1,12 +1,12 @@
 ﻿using MongoDB.Driver;
 using Realtorist.DataAccess.Abstractions;
-using Realtorist.DataAccess.Mongo.Settings;
+using Realtorist.DataAccess.Implementations.Mongo.Settings;
 using Realtorist.Models.Helpers;
 using Realtorist.Models.Settings;
 using System;
 using System.Threading.Tasks;
 
-namespace Realtorist.DataAccess.Mongo.DataAccess
+namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 {
     /// <summary>
     /// Implements access to settings in MongoDB
