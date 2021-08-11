@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PackageId>Realtorist.DataAccess.Mongo</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Dmytro Bondarchuk</Authors>
+    <Title>Realtorist.DataAccess.Mongo</Title>
+    <Description>Mongo data access implementation for the Realtorist framework</Description>
+    <RepositoryUrl>https://github.com/realtorist/Realtorist.DataAccess.Mongo</RepositoryUrl>
+    <ReleaseNotes>Initial publish</ReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Realtorist.Models" Version="0.0.1" />
+    <PackageReference Include="Realtorist.DataAccess.Abstractions" Version="0.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
+  </ItemGroup>
+
+</Project>
