@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Realtorist.DataAccess.Implementations.Mongo</PackageId>
-    <Version>0.0.1.2</Version>
+    <Version>0.0.2</Version>
     <Authors>Dmytro Bondarchuk</Authors>
     <Title>Realtorist.DataAccess.Implementations.Mongo</Title>
     <Description>Mongo data access implementation for the Realtorist framework</Description>
