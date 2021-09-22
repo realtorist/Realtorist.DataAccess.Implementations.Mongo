@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Conventions;
 using Realtorist.DataAccess.Abstractions;
 using Realtorist.DataAccess.Implementations.Mongo.DataAccess;
 using Realtorist.DataAccess.Implementations.Mongo.Serialization;
@@ -34,6 +35,10 @@ namespace Realtorist.DataAccess.Implementations.Mongo
 
             BsonSerializer.RegisterSerializationProvider(new EnumSerializerProvider());
             BsonSerializer.RegisterSerializationProvider(new JTokenSerializerProvider());
+
+            var pack = new ConventionPack();
+            pack.AddClassMapConvention("AlwaysApplyDiscriminator", m => m.SetDiscriminatorIsRequired(false));
+            ConventionRegistry.Register("AlwaysApplyDiscriminatorConvention", pack, t => true);
         }
     }
 }
