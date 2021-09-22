@@ -35,10 +35,6 @@ namespace Realtorist.DataAccess.Implementations.Mongo
 
             BsonSerializer.RegisterSerializationProvider(new EnumSerializerProvider());
             BsonSerializer.RegisterSerializationProvider(new JTokenSerializerProvider());
-
-            var pack = new ConventionPack();
-            pack.AddClassMapConvention("AlwaysApplyDiscriminator", m => m.SetDiscriminatorIsRequired(false));
-            ConventionRegistry.Register("AlwaysApplyDiscriminatorConvention", pack, t => true);
         }
     }
 }

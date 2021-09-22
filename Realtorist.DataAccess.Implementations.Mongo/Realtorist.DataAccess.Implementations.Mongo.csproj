@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Realtorist.DataAccess.Implementations.Mongo</PackageId>
-    <Version>0.0.1.1</Version>
+    <Version>0.0.1</Version>
     <Authors>Dmytro Bondarchuk</Authors>
     <Title>Realtorist.DataAccess.Implementations.Mongo</Title>
     <Description>Mongo data access implementation for the Realtorist framework</Description>
     <RepositoryUrl>https://github.com/realtorist/Realtorist.DataAccess.Implementations.Mongo</RepositoryUrl>
-    <ReleaseNotes>Added convention to not set descriminator</ReleaseNotes>
+    <ReleaseNotes>Initial publish</ReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
