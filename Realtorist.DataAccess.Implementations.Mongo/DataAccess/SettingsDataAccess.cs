@@ -4,6 +4,9 @@ using Realtorist.DataAccess.Implementations.Mongo.Settings;
 using Realtorist.Models.Helpers;
 using Realtorist.Models.Settings;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Threading.Tasks;
 
 namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
@@ -39,10 +42,21 @@ namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 
         public async Task UpdateSettingsAsync(string type, object newSettings)
         {
+            object settings;
+            if (typeof(IEnumerable).IsAssignableFrom(newSettings.GetType()) 
+                || typeof(IEnumerable<>).IsAssignableFrom(newSettings.GetType()))
+            {
+                settings = newSettings.ToJson().FromJson<ExpandoObject[]>();    
+            }
+            else
+            {
+                settings = newSettings.ToJson().FromJson<ExpandoObject>();
+            }
+
             var existing = await _settingsCollection.FindAsync(s => s.Id == type);
             if (await existing.AnyAsync())
             {
-                var update = Builders<Setting>.Update.Set(s => s.Value, newSettings);
+                var update = Builders<Setting>.Update.Set(s => s.Value, settings);
                 await _settingsCollection.FindOneAndUpdateAsync(s => s.Id == type, update);
 
                 return;
@@ -50,7 +64,7 @@ namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 
             await _settingsCollection.InsertOneAsync(new Setting {
                 Id =  type,
-                Value = newSettings
+                Value = settings
             });
         }
     }
