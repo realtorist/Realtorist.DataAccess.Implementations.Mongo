@@ -12,8 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Realtorist.Models" Version="0.0.1" />
-    <PackageReference Include="Realtorist.DataAccess.Abstractions" Version="0.0.1" />
+    <PackageReference Include="Realtorist.Models" Version="0.0.2" />
+    <PackageReference Include="Realtorist.DataAccess.Abstractions" Version="0.0.2" />
   </ItemGroup>
 
   <ItemGroup>
