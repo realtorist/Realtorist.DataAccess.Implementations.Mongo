@@ -1,13 +1,13 @@
 ﻿using MongoDB.Driver;
+using Newtonsoft.Json.Linq;
 using Realtorist.DataAccess.Abstractions;
 using Realtorist.DataAccess.Implementations.Mongo.Settings;
 using Realtorist.Models.Helpers;
 using Realtorist.Models.Settings;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Dynamic;
 using System.Threading.Tasks;
+using Extensions = Realtorist.Models.Helpers.Extensions;
 
 namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 {
@@ -42,16 +42,18 @@ namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 
         public async Task UpdateSettingsAsync(string type, object newSettings)
         {
-            object settings;
-            if (typeof(IEnumerable).IsAssignableFrom(newSettings.GetType()) 
-                || typeof(IEnumerable<>).IsAssignableFrom(newSettings.GetType()))
+            if (newSettings is null) throw new ArgumentNullException(nameof(newSettings));
+
+            var convertType = typeof(ExpandoObject);
+            var json = newSettings.ToJson();
+            var value = JToken.Parse(json);
+            
+            if (value.Type == JTokenType.Array)
             {
-                settings = newSettings.ToJson().FromJson<ExpandoObject[]>();    
+                convertType = typeof(ExpandoObject[]);
             }
-            else
-            {
-                settings = newSettings.ToJson().FromJson<ExpandoObject>();
-            }
+
+            var settings = value.ToObject(convertType);
 
             var existing = await _settingsCollection.FindAsync(s => s.Id == type);
             if (await existing.AnyAsync())
