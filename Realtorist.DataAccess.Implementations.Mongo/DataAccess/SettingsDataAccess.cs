@@ -28,10 +28,10 @@ namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
             _settingsCollection = database.GetCollection<Setting>(nameof(Setting) + "s");
         }
 
-        public async Task<T> GetSettingAsync<T>(string type) where T : new()
+        public async Task<T> GetSettingAsync<T>(string type)
         {
             var setting = await _settingsCollection.Find(s => s.Id == type).FirstOrDefaultAsync();
-            return setting != null ? Extensions.FromJson<T>(Extensions.ToJson(setting.Value)) : new T();
+            return setting != null ? Extensions.FromJson<T>(Extensions.ToJson(setting.Value)) : null;
         }
 
         public async Task<dynamic> GetSettingAsync(string type)
