@@ -7,7 +7,7 @@ using Realtorist.Models.Settings;
 using System;
 using System.Dynamic;
 using System.Threading.Tasks;
-using Extensions = Realtorist.Models.Helpers.Extensions;
+using HExtensions = Realtorist.Models.Helpers.Extensions;
 
 namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
 {
@@ -31,7 +31,7 @@ namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
         public async Task<T> GetSettingAsync<T>(string type)
         {
             var setting = await _settingsCollection.Find(s => s.Id == type).FirstOrDefaultAsync();
-            return setting != null ? Extensions.FromJson<T>(Extensions.ToJson(setting.Value)) : null;
+            return setting != null ? HExtensions.FromJson<T>(HExtensions.ToJson(setting.Value)) : null;
         }
 
         public async Task<dynamic> GetSettingAsync(string type)

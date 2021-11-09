@@ -1,10 +1,8 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Realtorist.DataAccess.Abstractions;
 using Realtorist.DataAccess.Implementations.Mongo.Settings;
 using Realtorist.Models.Listings;
-using Realtorist.Models.Enums;
 using Realtorist.Models.Enums.LookupTypes;
 using Realtorist.Models.Helpers;
 using Realtorist.Models.Geo;
@@ -17,7 +15,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using System.Linq.Expressions;
-using Realtorist.Models.Listings.Enums;
 using Realtorist.Models.Exceptions;
 
 namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
@@ -100,18 +97,18 @@ namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
             return listings.Union(extraListings).ToList();
         }
 
-        public async Task<List<string>> GetIdsAsync(ListingSource source)
+        public async Task<List<string>> GetIdsAsync(Guid feedId)
         {
             return await _listings
-                .Find(l => l.Source == source)
+                .Find(l => l.FeedId == feedId)
                 .Project(listing => listing.ExternalId)
                 .ToListAsync();
         }
 
-        public async Task<DateTime?> GetLatestUpdateDateTimeAsync(ListingSource source)
+        public async Task<DateTime?> GetLatestUpdateDateTimeAsync(Guid feedId)
         {
             var listing = await _listings
-                .Find(l => l.Source == source)
+                .Find(l => l.FeedId == feedId)
                 .SortByDescending(l => l.LastUpdated)
                 .FirstOrDefaultAsync();
 
@@ -164,9 +161,9 @@ namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
             await _listings.DeleteManyAsync(listing => ids.Contains(listing.Id));
         }
 
-        public async Task RemoveListingsAsync(ListingSource source, IEnumerable<string> externalIds)
+        public async Task RemoveListingsAsync(Guid feedId, IEnumerable<string> externalIds)
         {
-            await _listings.DeleteManyAsync(listing => listing.Source == source && externalIds.Contains(listing.ExternalId));
+            await _listings.DeleteManyAsync(listing => listing.FeedId == feedId && externalIds.Contains(listing.ExternalId));
         }
 
         public async Task RemoveListingsAsync(params Guid[] ids)
@@ -347,9 +344,9 @@ namespace Realtorist.DataAccess.Implementations.Mongo.DataAccess
             return await UpdateOrAddListingAsync(l => l.Id == id, listing);
         }
 
-        public async Task<bool> UpdateOrAddListingAsync(string externalId, ListingSource source, Listing listing, bool saveCoordinates = false, bool saveDisabledAndFeatured = false)
+        public async Task<bool> UpdateOrAddListingAsync(string externalId, Guid feedId, Listing listing, bool saveCoordinates = false, bool saveDisabledAndFeatured = false)
         {
-            return await UpdateOrAddListingAsync(l => l.ExternalId == externalId && l.Source == source, listing, saveCoordinates, saveDisabledAndFeatured);
+            return await UpdateOrAddListingAsync(l => l.ExternalId == externalId && l.FeedId == feedId, listing, saveCoordinates, saveDisabledAndFeatured);
         }
 
         public Task<PaginationResult<Listing>> GetListingsAsync(PaginationRequest request, IDictionary<string, string> filter)
