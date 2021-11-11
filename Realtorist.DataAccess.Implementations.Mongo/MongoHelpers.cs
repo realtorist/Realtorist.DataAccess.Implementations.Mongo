@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Realtorist.DataAccess.Implementations.Mongo
@@ -306,19 +307,28 @@ namespace Realtorist.DataAccess.Implementations.Mongo
                 }
                 else if (propertyType == typeof(string) || propertyType.IsPrimitive)
                 {
-                    var method = typeof(string).GetMethod("Contains", new[] { typeof(string) });
-                    var valueExpression = Expression.Constant(pair.Value.ToLower(), typeof(string));
-
-                    Expression selectionExpression = selectExpression;
-                    if (propertyType != typeof(string))
+                    if (pair.Value.IsNullOrEmpty())
                     {
-                        selectionExpression = Expression.Call(selectExpression, typeof(object).GetMethod(nameof(object.ToString)));
+                        filterExpression = Expression.Equal(selectExpression, Expression.Constant(null));
                     }
+                    else
+                    {
+                        var method = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+                        var value = pair.Value.ToLower();
 
-                    selectionExpression = Expression.Call(selectExpression, typeof(string).GetMethod(nameof(string.ToLower), new Type[0]));
+                        var valueExpression = Expression.Constant(value, typeof(string));
 
-                    var containsExpression = Expression.Call(selectionExpression, method, valueExpression);
-                    filterExpression = Expression.Equal(containsExpression, Expression.Constant(true));
+                        Expression selectionExpression = selectExpression;
+                        if (propertyType != typeof(string))
+                        {
+                            selectionExpression = Expression.Call(selectExpression, typeof(object).GetMethod(nameof(object.ToString)));
+                        }
+
+                        selectionExpression = Expression.Call(selectExpression, typeof(string).GetMethod(nameof(string.ToLower), new Type[0]));
+
+                        var containsExpression = Expression.Call(selectionExpression, method, valueExpression);
+                        filterExpression = Expression.Equal(containsExpression, Expression.Constant(true));
+                    }
                 }
                 else if (propertyType.IsEnum)
                 {
